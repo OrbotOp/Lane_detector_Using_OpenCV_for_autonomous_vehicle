@@ -1,6 +1,6 @@
 # Lane Detector Using OpenCV for Autonomous Vehicle
 Autonomous Driving Car is one of the most disruptive innovations in AI. One of the many steps involved during the training of an autonomous driving car is lane detection. Road Lane Detection requires to detection of the path of self-driving cars and avoiding the risk of entering other lanes. Lane recognition algorithms reliably identify the location and borders of the lanes by analyzing the visual input. Advanced driver assistance systems (ADAS) and autonomous vehicle systems both heavily rely on them. Today we will be talking about one of these lane detection algorithms.
-	<img src="gpsdriver/data/Stationary_scatter.png" width=1000px>
+	<img src="images/Pipeline.png" width=1000px>
 
 ## Steps to Implement Road Lane Detection
 - Capturing and decoding video file: We will capture the video using Capdev and after the capturing has been initialized every video frame is decoded (i.e. converting into a sequence of images)
