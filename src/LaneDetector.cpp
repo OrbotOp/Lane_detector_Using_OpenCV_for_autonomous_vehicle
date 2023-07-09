@@ -1,4 +1,3 @@
-
 #include <string>
 #include <vector>
 #include "opencv2/opencv.hpp"
@@ -274,7 +273,7 @@ int LaneDetector::plotLane(cv::Mat inputImage, std::vector<cv::Point> lane, std:
   cv::putText(inputImage, turn, cv::Point(50, 90), cv::FONT_HERSHEY_COMPLEX_SMALL, 3, cv::Scalar(0, 255, 0), 1, cv::LINE_AA);
 
   // Show the final output image
-  cv::namedWindow("Lane", cv::WINDOW_AUTOSIZE);
+  cv::namedWindow("Lane", cv::WindowFlags::WINDOW_NORMAL);
   cv::imshow("Lane", inputImage);
   return 0;
 }

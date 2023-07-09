@@ -16,7 +16,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 # include header files
 include_directories(${OpenCV_INCLUDE_DIRS})
 
-add_executable(main src/demo.cpp src/LaneDetector.cpp)
+add_executable(main src/main.cpp src/LaneDetector.cpp)
 
 
 # link dynamic libraries to this executable
