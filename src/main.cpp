@@ -24,7 +24,7 @@ int main(int argc, char *argv[]) {
     cout<<"starting...."<<endl;
     cout<<"Hello User"<<endl;
     cout<<"Please Choose from these options:\n"
-      "1. Press 'g' = Denoise the image\n"
+      "1. Press 'g' = Remove_noise from the image\n"
       "2. Press 'e' = Detect Edges\n"
       "3. Press 'm' = Mask Frame\n"
       "4. Press 'h' = Hough Transform\n"
@@ -45,17 +45,18 @@ int main(int argc, char *argv[]) {
       return -1;
     }
     
-    //get some properties of the image
+    //retrieve the width and height of the video frames using the cv::CAP_PROP_FRAME_WIDTH and cv::CAP_PROP_FRAME_HEIGHT properties of the video capture device.
     cv::Size refS((int)capdev->get(cv::CAP_PROP_FRAME_WIDTH), (int)capdev->get(cv::CAP_PROP_FRAME_HEIGHT));
     cout << "Expected size: " << refS.width << " " << refS.height << endl;
 
     //identifies a window
     cv::namedWindow("Video", cv::WindowFlags::WINDOW_NORMAL);
     
-
+    //An instance of the LaneDetector class is created. 
+    //This class likely contains the implementation of the lane detection algorithm.
     LaneDetector lanedetector;  // Create the class object
     cv::Mat frame;
-    cv::Mat img_denoise;
+    cv::Mat img_rem_noise;
     cv::Mat img_edges;
     cv::Mat img_mask;
     cv::Mat img_lines;
@@ -137,19 +138,19 @@ int main(int argc, char *argv[]) {
 
       if(gPressed){
         anyKeyPressed = true;
-        // Denoise the image using a Gaussian filter
-        img_denoise = lanedetector.deNoise(frame);
-        cv::imshow("Output Video", img_denoise);
+        // Remove_noise from the image using a Gaussian filter
+        img_rem_noise = lanedetector.Remove_noise(frame);
+        cv::imshow("Output Video", img_rem_noise);
         if(sPressed){
-          cv::imwrite("Gaussian_Blur.png", img_denoise);
+          cv::imwrite("Gaussian_Blur.png", img_rem_noise);
         }
       }
       
       if(ePressed){
         anyKeyPressed = true;
         // Detect edges in the image
-        img_denoise = lanedetector.deNoise(frame);
-        img_edges = lanedetector.edgeDetector(img_denoise);
+        img_rem_noise = lanedetector.Remove_noise(frame);
+        img_edges = lanedetector.edgeDetector(img_rem_noise);
         cv::imshow("Output Video", img_edges);
         if(sPressed){
           cv::imwrite("Edge_detection.png", img_edges);
@@ -158,8 +159,8 @@ int main(int argc, char *argv[]) {
 
       if(mPressed){
         anyKeyPressed = true;
-        img_denoise = lanedetector.deNoise(frame);
-        img_edges = lanedetector.edgeDetector(img_denoise);
+        img_rem_noise = lanedetector.Remove_noise(frame);
+        img_edges = lanedetector.edgeDetector(img_rem_noise);
         // Mask the image so that we only get the ROI
         img_mask = lanedetector.mask(img_edges);
         cv::imshow("Output Video", img_mask);
@@ -170,8 +171,8 @@ int main(int argc, char *argv[]) {
 
       if(hPressed){
         anyKeyPressed = true;
-        img_denoise = lanedetector.deNoise(frame);
-        img_edges = lanedetector.edgeDetector(img_denoise);
+        img_rem_noise = lanedetector.Remove_noise(frame);
+        img_edges = lanedetector.edgeDetector(img_rem_noise);
         // Mask the image so that we only get the ROI
         img_mask = lanedetector.mask(img_edges);
         // Obtain Hough lines in the cropped image
@@ -190,8 +191,8 @@ int main(int argc, char *argv[]) {
 
       if(fPressed){
         anyKeyPressed = true;
-        img_denoise = lanedetector.deNoise(frame);
-        img_edges = lanedetector.edgeDetector(img_denoise);
+        img_rem_noise = lanedetector.Remove_noise(frame);
+        img_edges = lanedetector.edgeDetector(img_rem_noise);
         // Mask the image so that we only get the ROI
         img_mask = lanedetector.mask(img_edges);
         // Obtain Hough lines in the cropped image
