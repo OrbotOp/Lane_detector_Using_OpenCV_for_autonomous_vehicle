@@ -2,7 +2,8 @@
 Autonomous Driving Car is one of the most disruptive innovations in AI. One of the many steps involved during the training of an autonomous driving car is lane detection. Road Lane Detection requires to detection of the path of self-driving cars and avoiding the risk of entering other lanes. Lane recognition algorithms reliably identify the location and borders of the lanes by analyzing the visual input. Advanced driver assistance systems (ADAS) and autonomous vehicle systems both heavily rely on them. Today we will be talking about one of these lane detection algorithms.
 	
 ## Steps to Implement Road Lane Detection
-	<img src="images/Pipeline.png" width=1000px>
+
+	<img src = "images/Pipeline.png" width=1000px>
 	
 - **Remove Noise :**
    1. Apply Gaussian filter mask to make the image smoother.
