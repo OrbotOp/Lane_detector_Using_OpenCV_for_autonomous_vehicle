@@ -3,7 +3,7 @@ Autonomous Driving Car is one of the most disruptive innovations in AI. One of t
 	
 ## Steps to Implement Road Lane Detection
 
-	<img src = "images/Pipeline.png" width=1000px>
+![Pipeline](images/Pipeline.png)
 	
 - **Remove Noise :**
    1. Apply Gaussian filter mask to make the image smoother.
